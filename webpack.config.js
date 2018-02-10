@@ -32,11 +32,7 @@ module.exports = {
     ], 
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
-        index: 'index.html',
-        host: 'localhost',
-        port: 6000,
-        hot: true,
         compress: true,
-        inline: true
+        port: 9000,
     }
 };
