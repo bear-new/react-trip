@@ -23,6 +23,24 @@ module.exports = {
                 test: /\.(jsx|js)$/, 
                 use: ['babel-loader'],
                 exclude: /node_modules/
+            },
+            {
+                test: /\.(pcss|css)$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            module: true,
+                            localIdentName: '[name]__[local]___[hash:base64:5]'
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    }
+                ]
             }
         ]
     },
