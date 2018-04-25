@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-
-import './style.css';
+import { Component } from 'react';
+import style from './style.pcss';
 
 export default class Popup extends Component {
-    render() {
+    render () {
         return (
-            <div className="wrapper">
+            <div className={style.wrapper}>
+                <div></div>
                 <input />
             </div>
-        );
+        )
     }
 }
