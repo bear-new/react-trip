@@ -15,7 +15,10 @@ module.exports = {
         filename: '[name].[hash].bundle.js'
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.scss']
+        extensions: ['.js', '.jsx', '.scss'],
+        alias: {
+            utils: path.resolve(__dirname, 'src/utils')
+        }
     },
     module: {
         rules: [
