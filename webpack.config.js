@@ -42,9 +42,11 @@ module.exports = {
                         loader: 'postcss-loader',
                         options: {         // 如果没有options这个选项将会报错 No PostCSS Config found
                             ident: 'postcss',
-                            plugins: () => [
-                                require('autoprefixer')({browsers: ['last 10 versions']}), //CSS浏览器兼容
-                                require('cssnano')(), //压缩css
+                            plugins: [
+                                require('autoprefixer')({browsers: ['last 10 versions']}), // CSS浏览器兼容
+                                require('cssnano')(), // 压缩css
+                                require('postcss-nested')(), // css嵌套
+                                require('uncss') // 移除无用css
                             ],
                         }
 
