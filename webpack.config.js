@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HappyPack = require('happypack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = {
     title: 'react-trip',
@@ -23,20 +24,20 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.(jsx|js)$/, 
-                use: ['babel-loader'],
+                test: /\.(jsx|js)$/,
+                use: 'happypack/loader?id=jsx',
                 exclude: /node_modules/
             },
             {
                 test: /\.(pcss|css)$/,
                 use: [
                     'style-loader',
-                    { 
-                        loader: 'css-loader', 
+                    {
+                        loader: 'css-loader',
                         options: {
-                            modules: true, 
+                            modules: true,
                             localIdentName: '[name]__[local]___[hash:base64:5]'
-                        } 
+                        }
                     },
                     {
                         loader: 'postcss-loader',
@@ -45,8 +46,7 @@ module.exports = {
                             plugins: [
                                 require('autoprefixer')({browsers: ['last 10 versions']}), // CSS浏览器兼容
                                 require('cssnano')(), // 压缩css
-                                require('postcss-nested')(), // css嵌套
-                                require('uncss') // 移除无用css
+                                require('postcss-nested')() // css嵌套
                             ],
                         }
 
@@ -57,8 +57,13 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin(HtmlWebpackPluginConfig),
-        new webpack.optimize.ModuleConcatenationPlugin()
-    ], 
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new HappyPack({
+            id: 'jsx',
+            threads: 4,
+            loaders: ['babel-loader']
+        })
+    ],
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
