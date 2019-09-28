@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+        <title><%= htmlWebpackPlugin.options.title %></title>
+        <link href="src/components/picker/style.css"/>
+        <style>
+            ul {
+                height: 200px;
+                background: #dcffdc;
+                overflow: scroll;
+                /* transition: top 100 cubic-bezier(0, 0, 0.2, 1.15) 200; */
+                transition: top 0.1s linear 0.2s;
+            }
+
+            li {
+                height: 35px;
+                line-height: 35px;
+                font-size: 16px;
+            }
+
+            .selected {
+                color: red;
+            }
+
+            .picker-wrapper {
+                position: relative;
+            }
+
+            .border {
+                position: absolute;
+                width: 100%;
+                top: 70px;
+                height: 35px;
+                border: 1px #ccc solid;
+                border-width: 1px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="root"></div>
+    </body>
+</html>
