@@ -19,7 +19,10 @@ const HtmlWebpackPluginConfig = {
 
 const webpackConfig = {
     context: path.resolve(__dirname, '../'),
-    entry: './src/main',
+    entry: [
+        'react-hot-loader/patch',
+        './src/main'
+    ],
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].[hash].bundle.js'
@@ -29,6 +32,13 @@ const webpackConfig = {
         alias: {
             utils: 'src/utils'
         }
+    },
+    externals: {
+        // key是我们 import 的包名，value 是CDN为我们提供的全局变量名
+        // 所以最后 webpack 会把一个静态资源编译成：module.export.react = window.React
+        "react": "React",
+        // "react-dom": "ReactDOM",
+        // "react-router-dom": "ReactRouterDOM"
     },
     module: {
         rules: [

@@ -8,11 +8,11 @@ export default class Home extends Component {
         testA();
     }
     render() {
-        console.log(1111)
+        console.log('fffff')
         return (
             <div>
                 <h1>home</h1>
-                <Link to="/login">sign in</Link>
+                <Link to="/login">sign in xx</Link>
                 <div className="picker-wrapper">
                     <Picker
                         list={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
@@ -22,8 +22,4 @@ export default class Home extends Component {
             </div>
         )
     }
-}
-
-if (module.hot) {
-    module.hot.accept();
 }

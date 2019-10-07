@@ -1,4 +1,16 @@
 {
-  "presets": [["env", {"loose": true, "modules": false}], "react"],
-  "plugins": ["babel-plugin-transform-class-properties"]
+  "presets": [
+    [
+      "env",
+      {
+        "loose": true,
+        "modules": false
+      }
+    ],
+    "react"
+  ],
+  "plugins": [
+    "react-hot-loader/babel",
+    "babel-plugin-transform-class-properties"
+  ]
 }
