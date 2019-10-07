@@ -12,7 +12,7 @@ export default class Home extends Component {
         return (
             <div>
                 <h1>home</h1>
-                <Link to="/login">sign in xx</Link>
+                <Link to="/login">sign in bearnew</Link>
                 <div className="picker-wrapper">
                     <Picker
                         list={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}

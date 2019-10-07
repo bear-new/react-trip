@@ -2,7 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const HappyPack = require('happypack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
+const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const smp = new SpeedMeasurePlugin();
 
@@ -33,13 +34,13 @@ const webpackConfig = {
             utils: 'src/utils'
         }
     },
-    externals: {
-        // key是我们 import 的包名，value 是CDN为我们提供的全局变量名
-        // 所以最后 webpack 会把一个静态资源编译成：module.export.react = window.React
-        "react": "React",
-        // "react-dom": "ReactDOM",
-        // "react-router-dom": "ReactRouterDOM"
-    },
+    // externals: {
+    //     // key是我们 import 的包名，value 是CDN为我们提供的全局变量名
+    //     // 所以最后 webpack 会把一个静态资源编译成：module.export.react = window.React
+    //     "react": "React",
+    //     // "react-dom": "ReactDOM",
+    //     // "react-router-dom": "ReactRouterDOM"
+    // },
     module: {
         rules: [
             {
@@ -84,7 +85,8 @@ const webpackConfig = {
             threads: 4,
             loaders: ['babel-loader?cacheDirectory']
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new ProgressBarPlugin()
         // new WebpackParallelUglifyPlugin({
         //     uglifyJS: {
         //         output: {
