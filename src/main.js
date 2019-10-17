@@ -19,3 +19,11 @@ if (module.hot) {
         render(Router);
     });
 }
+
+// ReactDOM.render(
+//     <div>
+//         <h1>aegeanss</h1>
+//         <Router />
+//     </div>,
+//     document.getElementById('root')
+// )
