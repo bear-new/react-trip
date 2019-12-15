@@ -6,6 +6,7 @@ const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const smp = new SpeedMeasurePlugin();
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
 const HtmlWebpackPluginConfig = {
     title: 'react-trip',
@@ -86,7 +87,10 @@ const webpackConfig = {
             loaders: ['babel-loader?cacheDirectory']
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new ProgressBarPlugin()
+        new ProgressBarPlugin(),
+        new ServiceWorkerWebpackPlugin({
+            entry: path.join(__dirname, 'sw.js')
+        })
         // new WebpackParallelUglifyPlugin({
         //     uglifyJS: {
         //         output: {
@@ -108,8 +112,10 @@ const webpackConfig = {
         // compress: true,
         host: '0.0.0.0',
         port: 9000,
-        hot: true
-    }
+        hot: true,
+        https: true
+    },
+    devtool: 'source-map'
 };
 
 
