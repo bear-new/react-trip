@@ -22,7 +22,6 @@ const HtmlWebpackPluginConfig = {
 const webpackConfig = {
     context: path.resolve(__dirname, '../'),
     entry: [
-        'react-hot-loader/patch',
         './src/main'
     ],
     output: {
@@ -46,7 +45,10 @@ const webpackConfig = {
         rules: [
             {
                 test: /\.(jsx?)$/,
-                use: 'happypack/loader?id=jsx',
+                use: [
+                    'react-hot-loader/webpack',
+                    'happypack/loader?id=jsx'
+                ],
                 include: path.resolve(__dirname, '../src')
                 // exclude: '/node_modules/'
             },
@@ -113,7 +115,7 @@ const webpackConfig = {
         host: '0.0.0.0',
         port: 9000,
         hot: true,
-        https: true
+        // https: true
     },
     devtool: 'source-map'
 };
