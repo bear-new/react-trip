@@ -16,6 +16,11 @@ class Home extends Component {
             title: 'home'
         }
     }
+    componentWillMount() {
+        this.setState({
+            title: 'home222'
+        })
+    }
     componentDidMount() {
         testA();
     }
