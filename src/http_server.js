@@ -1,5 +1,6 @@
 const express = require('express');
-const { render } = require('./dist/bundle_server');
+// const { render } = require('./build/dist/bundle_server');
+import render from './main_server'
 const app = express();
 
 app.get('/', function (req, res) {

@@ -1,4 +1,4 @@
-import { hot } from 'react-hot-loader';
+// import { hot } from 'react-hot-loader/root';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { testA } from '../../utils/format';
@@ -16,11 +16,6 @@ class Home extends Component {
             title: 'home'
         }
     }
-    componentWillMount() {
-        this.setState({
-            title: 'home222'
-        })
-    }
     componentDidMount() {
         testA();
     }
@@ -30,13 +25,13 @@ class Home extends Component {
         })
     }
     render() {
-        console.log('fffff')
+        console.log('ssss')
         return (
             <div>
                 <h1 onClick={this.change}>{this.state.title}</h1>
+                <Link to="/login">sign in</Link>
                 <NumberList />
                 <Popup />
-                <Link to="/login">sign in bear new</Link>
                 <div className="picker-wrapper">
                     <Picker
                         list={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
@@ -48,5 +43,5 @@ class Home extends Component {
     }
 }
 
-export default hot(module)(Home);
-// export default Home;
+// export default hot(Home);
+export default Home;

@@ -23,6 +23,7 @@ const webpackConfig = {
     context: path.resolve(__dirname, '../'),
     entry: [
         './src/main'
+        // './src/hotMain'
     ],
     output: {
         path: path.resolve(__dirname, './dist'),
@@ -31,7 +32,7 @@ const webpackConfig = {
     resolve: {
         extensions: ['.js', '.jsx', '.scss'],
         alias: {
-            utils: 'src/utils'
+            'utils': 'src/utils',
         }
     },
     // externals: {
@@ -46,7 +47,6 @@ const webpackConfig = {
             {
                 test: /\.(jsx?)$/,
                 use: [
-                    'react-hot-loader/webpack',
                     'happypack/loader?id=jsx'
                 ],
                 include: path.resolve(__dirname, '../src')
@@ -61,18 +61,19 @@ const webpackConfig = {
                         loader: 'css-loader',
                         options: {
                             modules: true,
-                            localIdentName: '[name]__[local]___[chunkhash:base64:5]'
+                            // localIdentName: '[name]__[local]___[chunkhash:base64:5]'
                         }
                     },
                     {
                         loader: 'postcss-loader',
                         options: {         // 如果没有options这个选项将会报错 No PostCSS Config found
                             ident: 'postcss',
-                            plugins: [
-                                require('autoprefixer')({ browsers: ['last 10 versions'] }), // CSS浏览器兼容
-                                require('cssnano')(), // 压缩css
-                                require('postcss-nested')() // css嵌套
-                            ],
+                            plugins: (loader) => [
+                                require('postcss-import')({ root: loader.resourcePath }),
+                                require('postcss-cssnext')(),
+                                require('autoprefixer')(),
+                                require('cssnano')()
+                            ]
                         }
 
                     }
@@ -89,6 +90,7 @@ const webpackConfig = {
             loaders: ['babel-loader?cacheDirectory']
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
         new ProgressBarPlugin(),
         new ServiceWorkerWebpackPlugin({
             entry: path.join(__dirname, 'sw.js')
@@ -110,7 +112,7 @@ const webpackConfig = {
         // })
     ],
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        // contentBase: path.join(__dirname, 'dist'),
         // compress: true,
         host: '0.0.0.0',
         port: 9000,
