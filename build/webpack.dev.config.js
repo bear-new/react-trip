@@ -7,6 +7,7 @@ var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 const smp = new SpeedMeasurePlugin();
 const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const HtmlWebpackPluginConfig = {
     title: 'react-trip',
@@ -27,7 +28,8 @@ const webpackConfig = {
     ],
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: '[name].[hash].bundle.js'
+        filename: '[name].[hash].bundle.js',
+        chunkFilename: "[name].async.js"
     },
     resolve: {
         extensions: ['.js', '.jsx', '.scss'],
@@ -89,6 +91,7 @@ const webpackConfig = {
             threads: 4,
             loaders: ['babel-loader?cacheDirectory']
         }),
+        new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
         new ProgressBarPlugin(),
