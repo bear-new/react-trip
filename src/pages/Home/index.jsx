@@ -1,7 +1,6 @@
 // import { hot } from 'react-hot-loader/root';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Picker from '../../components/picker/index';
 import Popup from '../../components/popup/index';
 import '../../utils/decorator.js';
 const { whyDidYouUpdate } = require('why-did-you-update')
@@ -14,6 +13,10 @@ class Home extends Component {
             title: 'home',
             NumberList: null
         }
+    }
+    getSnapshotBeforeUpdate() {
+        console.log('5555');
+        return 1;
     }
     componentDidMount() {
         import('../../utils/format').then(format => {
@@ -32,6 +35,7 @@ class Home extends Component {
         })
     }
     render() {
+        console.log('77777')
         const { NumberList } = this.state;
         return (
             <div>
@@ -59,3 +63,4 @@ class Home extends Component {
 
 // export default hot(Home);
 export default Home;
+import Picker from '../../components/picker/index';
