@@ -23,7 +23,8 @@ const HtmlWebpackPluginConfig = {
 const webpackConfig = {
     context: path.resolve(__dirname, '../'),
     entry: [
-        './src/main'
+        // './src/main',
+        './src/test'
         // './src/hotMain'
     ],
     output: {

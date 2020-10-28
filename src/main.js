@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Router from './routers/index';
+import { testA } from './utils/format';
 
 const render = Component => {
     ReactDOM.render(
@@ -10,7 +11,7 @@ const render = Component => {
 }
 
 render(Router);
-
+testA();
 
 import runtime from 'serviceworker-webpack-plugin/lib/runtime';
 

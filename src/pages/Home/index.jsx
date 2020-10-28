@@ -19,9 +19,9 @@ class Home extends Component {
         return 1;
     }
     componentDidMount() {
-        import('../../utils/format').then(format => {
-            format.testA();
-        })
+        // import('../../utils/format').then(format => {
+        //     format.testA();
+        // })
 
         setTimeout(() => {
             this.setState({

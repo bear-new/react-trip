@@ -1,5 +1,9 @@
+export * from './format2';
+export * from './format3';
+
 export const testA = () => {
-    console.log(1);
+    const a = [1,2,3].find(x => x > 2);
+    console.log(1, a);
 }
 
 export const testB = () => {

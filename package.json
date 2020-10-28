@@ -52,7 +52,7 @@
     "stylelint": "^13.2.0",
     "stylelint-config-standard": "^20.0.0",
     "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.10.3",
     "webpack-node-externals": "^1.1.2",
     "webpack-parallel-uglify-plugin": "^1.0.8",
