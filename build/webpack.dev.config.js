@@ -23,8 +23,9 @@ const HtmlWebpackPluginConfig = {
 const webpackConfig = {
     context: path.resolve(__dirname, '../'),
     entry: [
-        // './src/main',
-        './src/test'
+        // 'react-hot-loader/patch',
+        './src/main',
+        // './src/test'
         // './src/hotMain'
     ],
     output: {
@@ -36,6 +37,7 @@ const webpackConfig = {
         extensions: ['.js', '.jsx', '.scss'],
         alias: {
             'utils': 'src/utils',
+            'react-dom': '@hot-loader/react-dom'
         }
     },
     // externals: {
@@ -93,7 +95,7 @@ const webpackConfig = {
             loaders: ['babel-loader?cacheDirectory']
         }),
         new CleanWebpackPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
         new ProgressBarPlugin(),
         new ServiceWorkerWebpackPlugin({

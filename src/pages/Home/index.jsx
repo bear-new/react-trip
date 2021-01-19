@@ -1,10 +1,11 @@
-// import { hot } from 'react-hot-loader/root';
+import { hot } from 'react-hot-loader';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Popup from '../../components/popup/index';
 import '../../utils/decorator.js';
-const { whyDidYouUpdate } = require('why-did-you-update')
-whyDidYouUpdate(React)
+import Picker from '../../components/picker/index';
+// const { whyDidYouUpdate } = require('why-did-you-update')
+// whyDidYouUpdate(React)
 
 class Home extends Component {
     constructor(props) {
@@ -15,7 +16,7 @@ class Home extends Component {
         }
     }
     getSnapshotBeforeUpdate() {
-        console.log('5555');
+        console.log('asdfasdfaf ');
         return 1;
     }
     componentDidMount() {
@@ -35,32 +36,32 @@ class Home extends Component {
         })
     }
     render() {
-        console.log('77777')
+        console.log('aaaaaa')
         const { NumberList } = this.state;
         return (
             <div>
-                <h1 onClick={this.change}>{this.state.title}</h1>
-                <Link to="/login">sign in</Link>
+                {/* <h1 onClick={this.change}>{this.state.title}</h1>
+                <Link to="/login">sign in2</Link>
                 <Popup />
                 <div className="picker-wrapper">
                     <Picker
                         list={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
                     />
                     <div className="border"></div>
-                </div>
-                {
+                </div> */}
+                {/* {
                     NumberList &&
                     <React.Suspense fallback={<div>Loading...</div>}>
                         <section>
                             <NumberList />
                         </section>
                     </React.Suspense>
-                }
+                } */}
             </div>
         )
     }
 }
 
-// export default hot(Home);
-export default Home;
-import Picker from '../../components/picker/index';
+export default hot(module)(Home);
+// export default Home;
+// import Picker from '../../components/picker/index';
